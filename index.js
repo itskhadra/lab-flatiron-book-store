@@ -43,5 +43,29 @@ const bookStore = {
     ]
 }
 
-// Write your code here!
+// Change the page heading
+document.getElementById('header').textContent = bookStore.name;
 
+// Get the existing book list
+const bookList = document.getElementById('book-list');
+
+// Remove the example book
+document.getElementById('delete-this').remove();
+
+// Display every book
+bookStore.books.forEach(function(book) {
+    const bookContainer = document.createElement('li');
+
+    const bookTitle = document.createElement('h3');
+    bookTitle.textContent = book.title;
+
+    const bookAuthor = document.createElement('p');
+    bookAuthor.textContent = book.author;
+
+    const bookImage = document.createElement('img');
+    bookImage.src = book.imageUrl;
+    bookImage.alt = book.title;
+
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+    bookList.appendChild(bookContainer);
+});
